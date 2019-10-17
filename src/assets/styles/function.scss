@@ -1,0 +1,3 @@
+@function variables ($var) {
+    @return map-get($variables, $var)
+}

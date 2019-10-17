@@ -1,0 +1,45 @@
+#container {
+    width: 90%;
+    height: 90%;
+    background-color: #d1cfcf;
+  }
+  
+  #card-title {
+    font-weight: bold;
+  }
+  
+  .pad-top-xl {
+    height: 100%;
+  }
+  
+  .spacer {
+    height: 30px;
+  }
+  
+  mat-card {
+    height: 45%;
+    margin-top: 16px;
+  }
+  
+  mat-card-content {
+    margin-top: 30px;
+    font-style: normal;
+    font-size: 16px;
+  }
+  
+  mat-card-actions {
+    margin-bottom: 15px !important;
+  }
+  
+  .button {
+    margin-left: 8px;
+    margin-right: 0 !important;
+  }
+  
+  #mat-card-actions-div {
+    width: 100%;
+  }
+  
+  #mat-card-container {
+    height: 100%;
+  }

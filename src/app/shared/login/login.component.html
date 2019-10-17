@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Login using your creds</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup] = "loginForm">
+          <mat-form-field>
+            <input formControlName="login" matInput placeholder="Login" />
+          </mat-form-field>
+          <mat-form-field>
+            <input  formControlName="password" matInput type="password" placeholder="Password" />
+          </mat-form-field> 
+          <mat-form-field
+          matTooltip="Provide code from GoogleAuthenticator"
+          matTooltipPosition="right"
+          >
+            <input formControlName="googleCode" type="number" matInput placeholder="Code" />
+          </mat-form-field> 
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="button" (click)="login()">Send</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,75 @@
+<div layout="row" layout-align="center" class="pad-top-xl">
+  <div id="container" layout="row" layout-align="center">
+    <mat-card
+      layout="column"
+      layout-align="space-between center"
+      class="mat-elevation-z8"
+    >
+      <div layout="column" layout-align="space-between center" id="mat-card-container">
+        <div>
+          <mat-card-header flex>
+            <mat-card-title id="card-title"
+              >Change company theme</mat-card-title
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="themeFormGroup" layout="column">
+              <div flex="40" layout="row">
+                <div flex="15">
+                  <input formControlName="primaryColor" matInput type="color" />
+                </div>
+                <span flex="15"></span>
+                <label flex>Pick Primary Color</label>
+              </div>
+              <span class="spacer"></span>
+              <div flex="20"></div>
+              <div flex="40" layout="row">
+                <div flex="15">
+                  <input formControlName="accentColor" matInput type="color" />
+                </div>
+                <span flex="15"></span>
+                <label flex>Pick Accent Color</label>
+              </div>
+              <input type="file" (change)="onFileSelected($event)">
+            </form>
+          </mat-card-content>
+        </div>
+        <div>
+          <mat-card-actions>
+            <div
+              id="mat-card-actions-div"
+              layout="row"
+              layout-align="space-around end"
+            >
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                (click)="onSubmit()"
+                class="button"
+              >
+                Submit
+              </button>
+              <button
+                mat-raised-button
+                color="accent"
+                type="button"
+                class="button"
+              >
+                Abort
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                class="button"
+              >
+                Default
+              </button>
+            </div>
+          </mat-card-actions>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

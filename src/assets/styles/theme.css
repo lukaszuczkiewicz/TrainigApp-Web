@@ -1,0 +1,15 @@
+:root {
+  --primary-color-50: #484748;
+  --primary-color-100: #cacaca;
+  --primary-color-200: #262526;
+  --primary-color-contrast-50: #ffffff;
+  --primary-color-contrast-100: #000000;
+  --primary-color-contrast-200: #ffffff;
+  --accent-color-50: #ffa726;
+  --accent-color-100: #ffe0b2;
+  --accent-color-200: #e65100;
+  --accent-color-contrast-50: #ffffff;
+  --accent-color-contrast-100: #000000;
+  --accent-color-contrast-200: #ffffff;
+}
+/*# sourceMappingURL=theme.css.map */

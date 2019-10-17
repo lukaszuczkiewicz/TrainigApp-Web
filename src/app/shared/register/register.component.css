@@ -1,0 +1,17 @@
+*, mat-card-actions, mat-card-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 400px;
+    
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    border:slategrey, solid;
+}

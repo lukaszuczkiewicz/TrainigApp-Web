@@ -1,0 +1,51 @@
+<div class="container">
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header fxLayoutAlign="center center">
+      Fill training properties
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="For Who?" fxLayoutAlign="center center">
+          <form [formGroup]="runnersForm" fxLayout="column">
+            <mat-form-field>
+              <input matInput formControlName="name" />
+              <mat-hint>Name</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="email" />
+              <mat-hint>Email Adress</mat-hint>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+        <mat-tab label="Traing detail">
+          <form [formGroup]="traingForm" fxLayout="column">
+            <mat-form-field>
+              <input matInput formControlName="warmUp" />
+              <mat-hint>Warm Up</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Training"
+                formControlName="acctualTraing"
+              />
+              <mat-hint>Training</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="coolDown" />
+              <mat-hint>Cool down</mat-hint>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="comment" />
+              <mat-hint>Comment</mat-hint>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-between start">
+      <button mat-raised-button color="primary" type="button">Submit</button>
+      <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
