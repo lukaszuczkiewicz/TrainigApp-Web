@@ -9,8 +9,6 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { CoreModule } from './core/core/core.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminModule } from './modules/admin/admin.module';
-
-import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddTokenInterceptor } from './core/core/security/jwt.interceptor';
 import { SharedModule } from './shared/shared/shared.module';
@@ -29,8 +27,7 @@ import { SharedModule } from './shared/shared/shared.module';
     CoreModule,
     ReactiveFormsModule,
     FormsModule,
-    AdminModule,
-    FullCalendarModule
+    AdminModule
   ],
   providers: [
     {

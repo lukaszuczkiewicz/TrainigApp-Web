@@ -33,10 +33,6 @@ const routes: Routes = [
       {
         path: "admin",
         component: AdminPanelComponent
-      },
-      {
-        path:"runners",
-        loadChildren: "./modules/runners/runners.module#RunnersModule"
       }
     ]
   }
