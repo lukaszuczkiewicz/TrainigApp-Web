@@ -8,12 +8,14 @@ export const environment: {
   login: string;
   getPreSharedKey: string;
   register: string;
+  runnersEndpoint: string;
 } = {
   production: false,
-  URL: 'https://localhost:44362/',
-  login: 'api/auth/login',
-  getPreSharedKey: 'api/auth/pre-shared-key',
-  register: 'api/auth/register'
+  URL: "http://localhost:49385/",
+  login: "api/auth/login",
+  getPreSharedKey: "api/auth/pre-shared-key",
+  register: "api/auth/register",
+  runnersEndpoint: "api/coach/runners"
 };
 
 /*

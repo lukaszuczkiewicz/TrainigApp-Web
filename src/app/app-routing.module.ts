@@ -4,6 +4,7 @@ import { LayoutComponent } from "./shared/layout/layout.component";
 import { LoginComponent } from "./shared/login/login.component";
 import { AdminPanelComponent } from "./modules/admin/admin-panel/admin-panel.component";
 import { RegisterComponent } from './shared/register/register.component';
+import { AuthGuarService } from './core/core/security/auth-guar.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: "",
     component: LayoutComponent,
+    canActivate: [AuthGuarService],
     children: [
       {
         path: "dashboard",
@@ -33,6 +35,10 @@ const routes: Routes = [
       {
         path: "admin",
         component: AdminPanelComponent
+      },
+      {
+        path: "runners",
+        loadChildren: "./modules/runners/runners.module#RunnersModule"
       }
     ]
   }

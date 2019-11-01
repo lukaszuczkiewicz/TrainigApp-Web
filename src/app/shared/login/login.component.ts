@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/dashboard"]);
         },
         err => {
-          this.matSnackBar.open(`Wrong crayons ;) ${err}`, "Ok", { duration: 3000 });
+          this.matSnackBar.open(`Bad credentials`, "Ok", { duration: 3000 });
         }
       );
   }
