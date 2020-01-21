@@ -25,14 +25,17 @@ export class RegisterComponent implements OnInit {
     this.buildRegisterForm();
   }
 
-  onRegister(): void {}
+  onRegister(): void {
+    this.register();
+  }
 
   private buildRegisterForm() {
     this.registerForm = this.fb.group({
       login: ["", Validators.required],
-      password: ["password", Validators.required],
+      password: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
       preSharedKey: [this.preSharedKey],
-      firstName: ["firstname", Validators.required],
+      firstName: ["", Validators.required],
       lastName: ["", Validators.required]
     });
   }
@@ -41,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.getPreSharedKey().subscribe(
       res => {
         this.preSharedKey = res.key;
-        this.QRCode = `otpauth://totp/Andrzej?secret=${res}&issuer=SocialApp`;
+        this.QRCode = `otpauth://totp/Andrzej?secret=${res.key}&issuer=SocialApp`;
         console.log(res)
       },
       err => {

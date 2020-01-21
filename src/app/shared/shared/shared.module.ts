@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { CoreModule } from 'src/app/core/core/core.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CoreModule,
     NgxQRCodeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
   ],
   exports: [
     LoginComponent,
