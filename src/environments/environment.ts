@@ -14,7 +14,7 @@ export const environment: {
   URL: "http://localhost:49385/",
   login: "api/auth/login",
   getPreSharedKey: "api/auth/pre-shared-key",
-  register: "api/auth/register",
+  register: "api/coach/register",
   runnersEndpoint: "api/coach/runners"
 };
 

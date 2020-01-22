@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
       login: ["", Validators.required],
       password: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
-      preSharedKey: [this.preSharedKey],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required]
     });
@@ -45,7 +44,6 @@ export class RegisterComponent implements OnInit {
       res => {
         this.preSharedKey = res.key;
         this.QRCode = `otpauth://totp/Andrzej?secret=${res.key}&issuer=SocialApp`;
-        console.log(res)
       },
       err => {
         this.matSnackBar.open("Can't get Pre Shared Key", "OK", {
@@ -56,6 +54,17 @@ export class RegisterComponent implements OnInit {
   }
 
   protected register(): void {
-    this.registerService.register(this.registerForm.value)
+    if (this.registerForm.invalid || !this.preSharedKey) {
+      this.matSnackBar.open("Invalid form or can't get Can't get Pre Shared Key", "OK", {
+        duration: 3000
+      });
+      return;
+    }
+
+    const user: UserToRegister = {
+      ...this.registerForm.value,
+      PreSharedKey: this.preSharedKey
+    }
+    this.registerService.register(user);
   }
 }
