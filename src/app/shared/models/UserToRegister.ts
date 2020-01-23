@@ -2,7 +2,7 @@ export class UserToRegister {
   Login: string;
   Password: string;
   PreSharedKey: string;
-  email: string;
+  Email: string;
   FirstName: string;
   LastName: string;
 }
