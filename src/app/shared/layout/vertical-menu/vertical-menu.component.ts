@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material';
 import { ReportIssueComponent } from '../../report-issue/report-issue.component';
 import { Router } from '@angular/router';
+import { RunnersService } from 'src/app/modules/runners/services/runners.service';
 
 @Component({
   selector: "vertical-menu",
@@ -15,12 +16,20 @@ export class VerticalMenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  private onAllTrainingsClick() {
-    this.router.navigate(['/training']);
+  private onAddRunnerClick() {
+    this.router.navigate(['/runners/add']);
   }
   
   private onRunnersClick() {
-    this.router.navigate(['/runners/list']);
+    this.router.navigate(['/runners']);
+  }
+
+  private onAddTrainingClick() {
+    this.router.navigate(['/training/add']);
+  }
+
+  private onTrainingsClick() {
+    this.router.navigate(['/training']);
   }
 
   private onReportIssueClick() {

@@ -5,9 +5,8 @@
         <h1 class="title">Training App</h1>
       </div>
       <div fxFlex fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
-        <span fxFlex="10">
-          <button mat-button (click)="onLogOutClick()">Log Out</button>
-        </span>
+        <button mat-button (click)="onSettingsClick()">Settings</button>
+        <button mat-button (click)="onLogOutClick()">Log Out</button>
         <span fxFlex="10">
           <button mat-icon-button (click)="changeTheme()" color="raised">
             <mat-icon>format_color_fill</mat-icon>
