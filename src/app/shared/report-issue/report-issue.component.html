@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>REPORT AN ISSUE</h1>
+<mat-dialog-content class="mat-typography">
+  <p>If you're having trouble, you've come to the right place.</p>
+  <p>Please use this form to tell us about the issue you're experiencing.</p>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput #message maxlength="256" placeholder="Message">
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="onSendClick(message.value)">Send</button>
+</mat-dialog-actions>
+
+
+

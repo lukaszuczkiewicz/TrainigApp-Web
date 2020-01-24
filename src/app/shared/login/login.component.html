@@ -1,5 +1,8 @@
 <div class="container">
   <mat-card>
+    <div>
+      <h1 class="title">Training App</h1>
+    </div>
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
       <mat-card-subtitle>Login using your creds</mat-card-subtitle>
@@ -21,7 +24,10 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="button" (click)="login()">Send</button>
+      <button mat-raised-button color="primary" type="button" [disabled]="!loginForm.valid" (click)="login()">Send</button>
     </mat-card-actions>
+    <mat-card-footer>
+      <a [routerLink]="['/register']" class="link">Don't have an account? Sign up</a>
+    </mat-card-footer>
   </mat-card>
 </div>
