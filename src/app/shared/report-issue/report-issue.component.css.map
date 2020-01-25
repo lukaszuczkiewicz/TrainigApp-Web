@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,SAAS,EAAE,KAAK;EAChB,SAAS,EAAE,KAAK;EAChB,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,mBAAmB,CAAC;EAClB,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "report-issue.component.scss"
+    ],
+    "names": [],
+    "file": "report-issue.component.css"
+}

@@ -1,3 +1,27 @@
-<p>
-  add-runner works!
-</p>
+<div class="container">
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-header fxLayoutAlign="center center">
+      Add a new runner
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="runnerForm" fxLayout="column">
+        <mat-form-field>
+          <input matInput formControlName="firstname" />
+          <mat-hint>First Name</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="lastname" />
+          <mat-hint>Last Name</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="email" />
+          <mat-hint>Email Adress</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-between start">
+      <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
+      <button mat-raised-button color="primary" type="submit" (click)="createRunner()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,gBAAgB,CAAC;EACf,OAAO,EAAE,IAAI;CACd",
+    "sources": [
+        "runners-list.component.scss"
+    ],
+    "names": [],
+    "file": "runners-list.component.css"
+}
