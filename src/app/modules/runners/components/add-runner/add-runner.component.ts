@@ -21,13 +21,14 @@ export class AddRunnerComponent implements OnInit {
       this.runnerForm = this.fb.group({
         firstname: ["", Validators.required],
         lastname: ["", Validators.required],
-        email: ["", Validators.email]
+        email: ["", [Validators.email, Validators.required]]
       });
   }
 
   clearForm(): void {
     this.runnerForm.reset();
   }
+
   createRunner() {
     const runner: RunnerToCreate = {
       firstName: this.runnerForm.value.firstname,

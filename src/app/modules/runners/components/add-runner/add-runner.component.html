@@ -20,8 +20,8 @@
       </form>
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="space-between start">
-      <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
-      <button mat-raised-button color="primary" type="submit" (click)="createRunner()">Submit</button>
+      <button mat-raised-button color="accent" type="button" [disabled]="!runnerForm.dirty" (click)="clearForm()">Reset</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="runnerForm.invalid" (click)="createRunner()">Submit</button>
     </mat-card-actions>
   </mat-card>
 </div>
