@@ -4,48 +4,41 @@
       Fill training properties
     </mat-card-header>
     <mat-card-content>
-      <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="For Who?" fxLayoutAlign="center center">
-          <form [formGroup]="runnersForm" fxLayout="column">
-            <mat-form-field>
-              <input matInput formControlName="name" />
-              <mat-hint>Name</mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput formControlName="email" />
-              <mat-hint>Email Adress</mat-hint>
-            </mat-form-field>
-          </form>
-        </mat-tab>
-        <mat-tab label="Traing detail">
-          <form [formGroup]="traingForm" fxLayout="column">
-            <mat-form-field>
-              <input matInput formControlName="warmUp" />
-              <mat-hint>Warm Up</mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Training"
-                formControlName="acctualTraing"
-              />
-              <mat-hint>Training</mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput formControlName="coolDown" />
-              <mat-hint>Cool down</mat-hint>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput formControlName="comment" />
-              <mat-hint>Comment</mat-hint>
-            </mat-form-field>
-          </form>
-        </mat-tab>
-      </mat-tab-group>
+      <form [formGroup]="traingForm" fxLayout="column">
+        <mat-form-field>
+          <mat-label>Choose a runner</mat-label>
+          <mat-select formControlName="runner">
+            <mat-option *ngFor="let runner of runners" [value]="runner.id">
+              {{runner.firstName}} {{runner.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateToDo">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Warm Up</mat-label>
+          <input matInput formControlName="warmUp" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Training</mat-label>
+          <input matInput formControlName="actualTraing" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cool Down</mat-label>
+          <input matInput formControlName="coolDown" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comment</mat-label>
+          <input matInput formControlName="comment" />
+        </mat-form-field>
+      </form>
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="space-between start">
-      <button mat-raised-button color="primary" type="button">Submit</button>
-      <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
+      <button mat-raised-button color="accent" type="button" [disabled]="!traingForm.dirty" (click)="clearForm()">Reset</button>
+      <button mat-raised-button color="primary" type="button" [disabled]="traingForm.invalid" (click)="createTraining()">Submit</button>
     </mat-card-actions>
   </mat-card>
 </div>
