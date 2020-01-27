@@ -3,7 +3,7 @@ import { IRunner } from '../../runners/models/IRunner';
 export class Training {
   trainingId: string;
   runner: IRunner;
-  dateToDo: string;
+  timeToDo: string;
   details: string;
   comments: string;
   isDone: boolean;

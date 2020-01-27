@@ -26,7 +26,7 @@ export class AddTrainingComponent implements OnInit {
   ngOnInit() {
       this.traingForm = this.fb.group({
         runner: ["", Validators.required],
-        dateToDo: ["", Validators.required],
+        timeToDo: ["", Validators.required],
         warmUp: [this.warmUp, Validators.required],
         actualTraing: ["", Validators.required],
         coolDown: [this.coolDown, Validators.required],
@@ -48,13 +48,14 @@ export class AddTrainingComponent implements OnInit {
   }
 
   createTraining() {
+    const val = this.traingForm.value;
     const training: TrainingToCreate = {
-      runnerId: this.traingForm.value.runner,
-      dateToDo: this.traingForm.value.dateToDo,
-      details: this.traingForm.value.actualTraing,
-      comments: this.traingForm.value.comment
+      runnerId: val.runner,
+      timeToDo: val.timeToDo,
+      details: `Warm-up: ${val.warmUp}, Actual training: ${val.actualTraing}, Cool Down: ${val.coolDown}`,
+      comments: val.comment
     };
-    console.log(training.dateToDo)
+    console.log(training.timeToDo)
     this.trainingService.createTraining(training).subscribe(()=> {
       this.clearForm();
       this.matSnackBar.open(`The training was created successfully.`, "Ok", { duration: 3000 });

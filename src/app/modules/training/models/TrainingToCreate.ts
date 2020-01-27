@@ -1,6 +1,6 @@
 export class TrainingToCreate {
   runnerId: string;
-  dateToDo: string;
+  timeToDo: string;
   details: string;
   comments: string;
 }
