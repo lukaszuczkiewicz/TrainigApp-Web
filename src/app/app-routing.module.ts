@@ -41,6 +41,9 @@ const routes: Routes = [
         loadChildren: "./modules/runners/runners.module#RunnersModule"
       }
     ]
+  },
+  { 
+    path: "**", redirectTo: "", pathMatch: "full"
   }
 ];
 

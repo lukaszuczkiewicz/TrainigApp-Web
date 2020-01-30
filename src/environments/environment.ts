@@ -8,14 +8,20 @@ export const environment: {
   login: string;
   getPreSharedKey: string;
   register: string;
+  addRunner: string
   runnersEndpoint: string;
+  addTraining: string,
+  trainings: string
 } = {
   production: false,
   URL: "http://localhost:49385/",
   login: "api/auth/login",
   getPreSharedKey: "api/auth/pre-shared-key",
   register: "api/coach/register",
-  runnersEndpoint: "api/coach/runners"
+  addRunner: "api/coach/runner",
+  runnersEndpoint: "api/coach/runners",
+  addTraining: "api/coach/training",
+  trainings: "api/coach/trainings"
 };
 
 /*
