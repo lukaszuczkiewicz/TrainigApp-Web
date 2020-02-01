@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material';
 import { ReportIssueComponent } from '../../report-issue/report-issue.component';
 import { Router } from '@angular/router';
-import { RunnersService } from 'src/app/modules/runners/services/runners.service';
 
 @Component({
   selector: "vertical-menu",

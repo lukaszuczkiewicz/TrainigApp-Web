@@ -29,7 +29,7 @@ const routes: Routes = [
         loadChildren: "./modules/dashboard/dashboard.module#DashboardModule"
       },
       {
-        path: "training",
+        path: "training", 
         loadChildren: "./modules/training/training.module#TrainingModule"
       },
       {

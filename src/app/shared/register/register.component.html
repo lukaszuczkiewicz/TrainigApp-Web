@@ -10,25 +10,25 @@
         <mat-card-content>
           <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
             <mat-form-field>
-              <input matInput type="text" formControlName="login" placeholder="login">
+              <input id="login" matInput type="text" formControlName="login" placeholder="login">
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="text" formControlName="password" placeholder="password"/>
+              <input id="password" matInput type="text" formControlName="password" placeholder="password"/>
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="text" formControlName="email" placeholder="email"/>
+              <input id="email" matInput type="text" formControlName="email" placeholder="email"/>
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="text" formControlName="firstName" placeholder="first name"/>
+              <input id="firstName" matInput type="text" formControlName="firstName" placeholder="first name"/>
             </mat-form-field>
             <mat-form-field>
-              <input matInput type="text" formControlName="lastName" placeholder="last name"/>
+              <input id="lastName" matInput type="text" formControlName="lastName" placeholder="last name"/>
             </mat-form-field>
             <mat-card-actions>
-              <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Send</button>
+              <button id="sendButton" mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Send</button>
             </mat-card-actions>
           </form>
-          <ngx-qrcode [qrc-value]="QRCode" qrc-errorCorrectionLevel="L" class="qrcode"> </ngx-qrcode>
+          <ngx-qrcode [qrc-value]="QRCode" qrc-errorCorrectionLevel="L" class="qrcode" id="qrcode"> </ngx-qrcode>
         </mat-card-content>
         <mat-card-footer>
           <a routerLink="/" class="link">Already registered? Sign in</a>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { RunnersService } from "../../services/runners.service";
 import { IRunner } from "../../models/IRunner";
-import { MatTableDataSource } from "@angular/material";
+import { MatTableDataSource, MatDialog, Sort, MatPaginator, MatSort } from "@angular/material";
+import { EditRunnerComponent } from '../edit-runner/edit-runner.component';
 
 @Component({
   selector: "app-runners-list",
@@ -9,24 +10,31 @@ import { MatTableDataSource } from "@angular/material";
   styleUrls: ["./runners-list.component.scss"]
 })
 export class RunnersListComponent implements OnInit {
-  protected runnesList: IRunner[];
+  protected runnersList: IRunner[];
+  protected sortedRunners: IRunner[];
   protected dataSource: MatTableDataSource<IRunner> = new MatTableDataSource();
   protected displayedColumns: string[] = [
     "No.",
     "First Name",
     "Last Name",
+    "Email",
     "Calendar",
-    "Edit"
+    "Edit",
+    "Delete"
   ];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private runnersService: RunnersService) {}
+  constructor(private runnersService: RunnersService,
+    private dialog: MatDialog) {}
 
   ngOnInit() {
     this.runnersService.getRunners().subscribe(
       res => {
-        this.runnesList = res;
-        this.dataSource.data = this.runnesList;
-        console.log(this.dataSource);
+        this.runnersList = res;
+        this.dataSource.data = this.runnersList;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       },
       err => {
         console.warn(err);
@@ -37,8 +45,15 @@ export class RunnersListComponent implements OnInit {
   protected applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  protected onDelete(element) {
+    console.log(element);
+  }
 
-  protected onEdit(id: string): void {
-    console.log(id);
+  protected onEdit(runner: IRunner): void {
+    this.dialog.open(EditRunnerComponent, {
+      data: {
+        runner
+      }
+    });
   }
 }
