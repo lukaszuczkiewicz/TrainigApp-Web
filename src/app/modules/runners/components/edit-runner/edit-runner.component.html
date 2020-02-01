@@ -1,0 +1,23 @@
+<div class="mat-dialog-title">Edit the runner</div>
+<div class="mat-dialog-content">
+  <form [formGroup]="runnerForm" fxLayout="column">
+    
+    <mat-form-field>
+      <mat-hint>First Name</mat-hint>
+      <input matInput formControlName="firstname" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-hint>Last Name</mat-hint>
+      <input matInput formControlName="lastname" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-hint>Email</mat-hint>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="!isOpened" type="submit" [disabled]="runnerForm.invalid" (click)="saveChanges()">Save changes</button>
+</mat-dialog-actions>
