@@ -46,7 +46,15 @@ export class RunnersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   protected onDelete(element) {
-    console.log(element);
+    this.runnersService.deleteRunner(element.id).subscribe(
+      res => {
+        console.log('runner deleted');
+        this.ngOnInit();
+      },
+      err => {
+        console.warn(err);
+      }
+    );
   }
 
   protected onEdit(runner: IRunner): void {

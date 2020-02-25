@@ -23,8 +23,8 @@ export class RunnersService {
   }
 
   public deleteRunner(runnerId: string): Observable<any>  {
-    const url: string = this.URL + this.deleteRunnerEndpoint;
-    return this.http.post(url, runnerId);
+    const url: string = this.URL + this.deleteRunnerEndpoint + '/' + runnerId;
+    return this.http.post(url, {});
   }
 
   public editRunner(runner: IRunner) {
