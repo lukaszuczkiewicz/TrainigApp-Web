@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { RunnersService } from '../../services/runners.service';
 import { RunnerToCreate } from '../../models/RunnerToCreate';
-import { MatSnackBar } from '@angular/material';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-add-runner',
@@ -14,7 +14,7 @@ export class AddRunnerComponent implements OnInit {
   
   constructor(private fb: FormBuilder,
     private runnersService: RunnersService,
-    private matSnackBar: MatSnackBar) {}
+    private alertService: AlertService) {}
 
   ngOnInit() {
     
@@ -37,9 +37,9 @@ export class AddRunnerComponent implements OnInit {
     };
     this.runnersService.createRunner(runner).subscribe(()=> {
       this.clearForm();
-      this.matSnackBar.open(`A runner was created successfully.`, "Ok", { duration: 3000 });
+      this.alertService.openDialogSuccess(`A runner was created successfully.`);
     }, err => {
-      this.matSnackBar.open(`Couldn't create a runner`, "Ok", { duration: 3000 });
+      this.alertService.openDialogWarning(`Couldn't create a runner`);
     });;
   }
 }

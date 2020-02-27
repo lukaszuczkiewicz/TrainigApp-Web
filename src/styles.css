@@ -13,3 +13,13 @@ body {
   font-family: 'Baloo Bhai', cursive;
   margin: 0;
 }
+
+.success-snackbar {
+  background-color: #25be25 !important;
+  color: white !important;
+}
+
+.warning-snackbar {
+  background-color: #e53935 !important;
+  color: white !important;
+}

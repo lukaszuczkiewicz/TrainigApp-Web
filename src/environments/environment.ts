@@ -9,7 +9,7 @@ export const environment: {
   getPreSharedKey: string;
   register: string;
   addRunner: string;
-  editRunner: string;
+  updateRunner: string;
   deleteRunner: string;
   runnersEndpoint: string;
   addTraining: string,
@@ -21,7 +21,7 @@ export const environment: {
   getPreSharedKey: "api/auth/pre-shared-key",
   register: "api/coach/register",
   addRunner: "api/coach/runner",
-  editRunner: "api/coach/runner",
+  updateRunner: "api/coach/runner/update",
   deleteRunner: "api/coach/runner",
   runnersEndpoint: "api/coach/runners",
   addTraining: "api/coach/training",

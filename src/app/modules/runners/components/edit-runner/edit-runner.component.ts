@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RunnersService } from "../../services/runners.service";
-import { IRunner } from '../../models/IRunner';
-import { MatSnackBar } from "@angular/material";
-import {MAT_DIALOG_DATA} from '@angular/material'
+import { MAT_DIALOG_DATA } from '@angular/material'
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { RunnerToUpdate } from '../../models/RunnerToUpdate';
 
 @Component({
   selector: "app-edit-runner",
@@ -12,13 +12,14 @@ import {MAT_DIALOG_DATA} from '@angular/material'
 })
 export class EditRunnerComponent implements OnInit {
   runnerForm: FormGroup;
-  runner: IRunner;
+  runner: RunnerToUpdate;
   isOpened = true;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     private fb: FormBuilder,
     private runnersService: RunnersService,
-    private matSnackBar: MatSnackBar
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -34,23 +35,20 @@ export class EditRunnerComponent implements OnInit {
   }
 
   saveChanges() {
-    this.runner = {
-      id: this.data.runner.id,
-      firstName: this.runnerForm.value.firstname,
-      lastName: this.runnerForm.value.lastname,
-      email: this.runnerForm.value.email
-    };
-    this.runnersService.editRunner(this.runner).subscribe(
+    this.runner = new RunnerToUpdate();
+    this.runner.id = this.data.runner.id;
+    this.runner.firstName =  this.runnerForm.value.firstname;
+    this.runner.lastName = this.runnerForm.value.lastname;
+    this.runner.email = this.runnerForm.value.email;
+
+    this.runnersService.updateRunner(this.runner).subscribe(
       () => {
         this.clearForm();
-        this.matSnackBar.open(`The changes were saved successfully.`, "Ok", {
-          duration: 3000
-        });
+        this.alertService.openDialogSuccess(`The changes were saved successfully.`);
+        this.runnersService.updateTable();
       },
       err => {
-        this.matSnackBar.open(`Couldn't save the changes`, "Ok", {
-          duration: 3000
-        });
+        this.alertService.openDialogWarning(`Couldn't save the changes`);
       }
     );
     this.isOpened = false;

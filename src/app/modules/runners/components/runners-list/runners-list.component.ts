@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { RunnersService } from "../../services/runners.service";
 import { IRunner } from "../../models/IRunner";
-import { MatTableDataSource, MatDialog, Sort, MatPaginator, MatSort } from "@angular/material";
+import { MatTableDataSource, MatDialog, MatPaginator, MatSort } from "@angular/material";
 import { EditRunnerComponent } from '../edit-runner/edit-runner.component';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: "app-runners-list",
@@ -26,7 +27,8 @@ export class RunnersListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private runnersService: RunnersService,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog,
+    private alertService: AlertService) {}
 
   ngOnInit() {
     this.runnersService.getRunners().subscribe(
@@ -37,7 +39,15 @@ export class RunnersListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       err => {
-        console.warn(err);
+        this.alertService.openDialogWarning(err);
+      }
+    );
+    this.runnersService.updateTableSubject.subscribe(
+      res => {
+        this.dataSource.data = res;
+      },
+      err => {
+        this.alertService.openDialogWarning(err);
       }
     );
   }
@@ -45,14 +55,15 @@ export class RunnersListComponent implements OnInit {
   protected applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  protected onDelete(element) {
-    this.runnersService.deleteRunner(element.id).subscribe(
+
+  protected onDelete(runner: IRunner) {
+    this.runnersService.deleteRunner(runner.id).subscribe(
       res => {
-        console.log('runner deleted');
         this.ngOnInit();
+        this.alertService.openDialogWarning('Runner deleted successfully');
       },
       err => {
-        console.warn(err);
+        this.alertService.openDialogWarning(err);
       }
     );
   }
