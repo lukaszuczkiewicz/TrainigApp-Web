@@ -55,7 +55,6 @@ export class AddTrainingComponent implements OnInit {
       details: `Warm-up: ${val.warmUp}, Actual training: ${val.actualTraing}, Cool Down: ${val.coolDown}`,
       comments: val.comment
     };
-    console.log(training.timeToDo)
     this.trainingService.createTraining(training).subscribe(()=> {
       this.clearForm();
       this.matSnackBar.open(`The training was created successfully.`, "Ok", { duration: 3000 });

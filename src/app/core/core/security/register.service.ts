@@ -28,8 +28,6 @@ export class RegisterService {
 
   register(userToRegister: UserToRegister): void {
     const url = this.URL + this.registerEndpoint;
-    console.log("url:" + url)
-    console.log(userToRegister)
     this.http.post(url, userToRegister).subscribe(()=> {
       this.matSnackBar.open(`Registered successfully. You can now sign in.`, "Ok", { duration: 3000 });
     }, error => {

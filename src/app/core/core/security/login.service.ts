@@ -19,7 +19,6 @@ export class LoginService {
       Password: password,
       Code: googleCode
     };
-    console.log(url);
     return this.http.post(url, body);
   }
 }
