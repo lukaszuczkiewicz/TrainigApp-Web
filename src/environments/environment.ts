@@ -13,7 +13,8 @@ export const environment: {
   deleteRunner: string;
   runnersEndpoint: string;
   addTraining: string,
-  trainings: string
+  trainings: string,
+  reportIssue: string
 } = {
   production: false,
   URL: "http://localhost:49385/",
@@ -25,7 +26,8 @@ export const environment: {
   deleteRunner: "api/coach/runner",
   runnersEndpoint: "api/coach/runners",
   addTraining: "api/coach/training",
-  trainings: "api/coach/trainings"
+  trainings: "api/coach/trainings",
+  reportIssue: "api/coach/report-issue"
 };
 
 /*

@@ -21,5 +21,5 @@ export class AlertService {
       panelClass: ['error-snackbar']
     });
   }
-
+  
 }
