@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { RunnersService } from 'src/app/modules/runners/services/runners.service';
 import { IRunner } from 'src/app/modules/runners/models/IRunner';
-import { MatSnackBar } from '@angular/material';
 import { TrainingToCreate } from '../../models/TrainingToCreate';
 import { TrainingService } from '../../services/training.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: "app-add-training",
@@ -21,7 +21,7 @@ export class AddTrainingComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private runnersService: RunnersService,
     private trainingService: TrainingService,
-    private matSnackBar: MatSnackBar) {}
+    private alertService: AlertService) {}
 
   ngOnInit() {
       this.traingForm = this.fb.group({
@@ -38,7 +38,7 @@ export class AddTrainingComponent implements OnInit {
           this.runners = res;
         },
         err => {
-          this.matSnackBar.open(`Couldn't load user list.`, "Ok", { duration: 3000 });
+          this.alertService.error(`Couldn't load user list.`);
         }
       );
   }
@@ -57,9 +57,9 @@ export class AddTrainingComponent implements OnInit {
     };
     this.trainingService.createTraining(training).subscribe(()=> {
       this.clearForm();
-      this.matSnackBar.open(`The training was created successfully.`, "Ok", { duration: 3000 });
+      this.alertService.success(`The training was created successfully.`);
     }, err => {
-      this.matSnackBar.open(`Couldn't create the runner`, "Ok", { duration: 3000 });
+      this.alertService.error(`Couldn't create the runner`);
     });;
   }
 }

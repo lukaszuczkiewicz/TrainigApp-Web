@@ -46,18 +46,18 @@ export class RegisterComponent implements OnInit {
         this.QRCode = `otpauth://totp/Andrzej?secret=${res.key}&issuer=SocialApp`;
       },
       err => {
-        this.alertService.openDialogWarning("Can't get the Pre Shared Key");
+        this.alertService.error("Can't get the Pre Shared Key");
       }
     );
   }
 
   protected register(): void {
     if (this.registerForm.invalid) {
-      this.alertService.openDialogWarning("Invalid form");
+      this.alertService.error("Invalid form");
       return;
     }
     if (!this.preSharedKey) {
-      this.alertService.openDialogWarning("Can't get the Pre Shared Key");
+      this.alertService.error("Can't get the Pre Shared Key");
       return;
     }
 

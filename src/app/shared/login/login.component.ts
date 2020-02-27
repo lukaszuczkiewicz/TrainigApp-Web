@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginService } from "src/app/core/core/security/login.service";
 import { Router } from "@angular/router";
 import { StorageService } from "src/app/core/core/security/storage.service";
-import { MatSnackBar } from "@angular/material";
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: "app-login",
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private storage: StorageService,
-    private matSnackBar: MatSnackBar
+    private alertService: AlertService
   ) {}
 
   ngOnInit() {
@@ -40,9 +40,10 @@ export class LoginComponent implements OnInit {
         res => {
           this.storage.setItem("jwtToken", res.jwtToken);
           this.router.navigate(["/dashboard"]);
+          this.alertService.success(`Successfully logged in`);
         },
         err => {
-          this.matSnackBar.open(`Bad credentials`, "Ok", { duration: 3000 });
+          this.alertService.error(`Bad credentials`);
         }
       );
   }

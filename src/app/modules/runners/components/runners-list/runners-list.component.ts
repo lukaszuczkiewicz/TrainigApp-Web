@@ -39,7 +39,7 @@ export class RunnersListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       err => {
-        this.alertService.openDialogWarning(err);
+        this.alertService.error(err);
       }
     );
     this.runnersService.updateTableSubject.subscribe(
@@ -47,7 +47,7 @@ export class RunnersListComponent implements OnInit {
         this.dataSource.data = res;
       },
       err => {
-        this.alertService.openDialogWarning(err);
+        this.alertService.error(err);
       }
     );
   }
@@ -60,10 +60,10 @@ export class RunnersListComponent implements OnInit {
     this.runnersService.deleteRunner(runner.id).subscribe(
       res => {
         this.ngOnInit();
-        this.alertService.openDialogWarning('Runner deleted successfully');
+        this.alertService.success('Runner deleted successfully');
       },
       err => {
-        this.alertService.openDialogWarning(err);
+        this.alertService.error(err);
       }
     );
   }

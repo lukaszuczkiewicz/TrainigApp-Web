@@ -8,17 +8,17 @@ export class AlertService {
 
   constructor(private matSnackBar: MatSnackBar) { }
 
-  openDialogSuccess(message: string) {
+  success(message: string) {
     this.matSnackBar.open(message, null, {
       duration: 3000,
       panelClass: ['success-snackbar']
     });
   }
 
-  openDialogWarning(message: string) {
+  error(message: string) {
     this.matSnackBar.open(message, null, {
       duration: 3000,
-      panelClass: ['warning-snackbar']
+      panelClass: ['error-snackbar']
     });
   }
 

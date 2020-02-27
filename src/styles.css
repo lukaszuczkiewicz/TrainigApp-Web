@@ -19,7 +19,7 @@ body {
   color: white !important;
 }
 
-.warning-snackbar {
+.error-snackbar {
   background-color: #e53935 !important;
   color: white !important;
 }

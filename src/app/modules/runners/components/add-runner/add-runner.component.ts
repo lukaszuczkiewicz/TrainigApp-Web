@@ -37,9 +37,9 @@ export class AddRunnerComponent implements OnInit {
     };
     this.runnersService.createRunner(runner).subscribe(()=> {
       this.clearForm();
-      this.alertService.openDialogSuccess(`A runner was created successfully.`);
+      this.alertService.success(`A runner was created successfully.`);
     }, err => {
-      this.alertService.openDialogWarning(`Couldn't create a runner`);
+      this.alertService.error(`Couldn't create a runner`);
     });;
   }
 }

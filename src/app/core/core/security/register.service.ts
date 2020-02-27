@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
-import { UserToRegister } from "src/app/shared/models/UserToRegister";
-import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { Observable } from "rxjs";
+
+import { environment } from "src/environments/environment";
+import { UserToRegister } from "src/app/shared/models/UserToRegister";
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Injectable({
   providedIn: "root"
@@ -18,8 +19,8 @@ export class RegisterService {
 
   constructor(
     private http: HttpClient,
-    private matSnackBar: MatSnackBar,
-    private router: Router) {}
+    private router: Router,
+    private alertService: AlertService) {}
 
   getPreSharedKey(): Observable<IPreSharedKeyModel> {
     const url = this.URL + this.getPreSharedKeyEndpoint;
@@ -29,9 +30,9 @@ export class RegisterService {
   register(userToRegister: UserToRegister): void {
     const url = this.URL + this.registerEndpoint;
     this.http.post(url, userToRegister).subscribe(()=> {
-      this.matSnackBar.open(`Registered successfully. You can now sign in.`, "Ok", { duration: 3000 });
+      this.alertService.success(`Registered successfully. You can now sign in.`);
     }, error => {
-      this.matSnackBar.open(error, "Ok", { duration: 3000 });
+      this.alertService.error(error);
     }, () => {
       this.router.navigate(["login"]);
     });

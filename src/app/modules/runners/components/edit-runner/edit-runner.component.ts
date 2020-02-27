@@ -44,11 +44,11 @@ export class EditRunnerComponent implements OnInit {
     this.runnersService.updateRunner(this.runner).subscribe(
       () => {
         this.clearForm();
-        this.alertService.openDialogSuccess(`The changes were saved successfully.`);
+        this.alertService.success(`The changes were saved successfully.`);
         this.runnersService.updateTable();
       },
       err => {
-        this.alertService.openDialogWarning(`Couldn't save the changes`);
+        this.alertService.error(`Couldn't save the changes`);
       }
     );
     this.isOpened = false;

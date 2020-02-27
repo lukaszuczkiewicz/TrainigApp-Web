@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
 import { StorageService } from 'src/app/core/core/security/storage.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import { StorageService } from 'src/app/core/core/security/storage.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router,
-    private matSnackBar: MatSnackBar,
+    private alertService: AlertService,
     private storageService: StorageService) { }
 
   protected themes: boolean[] = [true, false, false, false];
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   onLogOutClick() {
     this.storageService.removeItem('jwtToken');
     this.router.navigate(['/']);
-    this.matSnackBar.open(`You are now logged out`, "Ok", { duration: 3000 });
+    this.alertService.success(`You are now logged out`);
   }
 
   onSettingsClick() {
