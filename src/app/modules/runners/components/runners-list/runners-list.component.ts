@@ -4,6 +4,7 @@ import { IRunner } from "../../models/IRunner";
 import { MatTableDataSource, MatDialog, MatPaginator, MatSort } from "@angular/material";
 import { EditRunnerComponent } from '../edit-runner/edit-runner.component';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-runners-list",
@@ -28,7 +29,8 @@ export class RunnersListComponent implements OnInit {
 
   constructor(private runnersService: RunnersService,
     private dialog: MatDialog,
-    private alertService: AlertService) {}
+    private alertService: AlertService,
+    private router: Router) {}
 
   ngOnInit() {
     this.runnersService.getRunners().subscribe(
@@ -74,5 +76,9 @@ export class RunnersListComponent implements OnInit {
         runner
       }
     });
+  }
+
+  protected onCalendar(runner: IRunner): void {
+    this.router.navigate(['/training/calendar'])
   }
 }

@@ -31,7 +31,7 @@
     <ng-container matColumnDef="Calendar">
       <th mat-header-cell *matHeaderCellDef>Calendar</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary">Go to calendar</button>
+        <button mat-raised-button color="primary" (click)="onCalendar(element)">Go to calendar</button>
       </td>
     </ng-container>
 

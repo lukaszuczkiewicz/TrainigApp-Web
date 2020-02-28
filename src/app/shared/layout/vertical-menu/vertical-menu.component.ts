@@ -34,4 +34,7 @@ export class VerticalMenuComponent implements OnInit {
   private onReportIssueClick() {
     this.dialog.open(ReportIssueComponent);
   }
+  private onCalendarClick() {
+    this.router.navigate(['/training/calendar']);
+  }
 }
