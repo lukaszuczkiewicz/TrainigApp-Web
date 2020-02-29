@@ -15,26 +15,22 @@ export class VerticalMenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  private onAddRunnerClick() {
+  protected onAddRunnerClick() {
     this.router.navigate(['/runners/add']);
   }
   
-  private onRunnersClick() {
+  protected onRunnersClick() {
     this.router.navigate(['/runners']);
   }
 
-  private onAddTrainingClick() {
+  protected onAddTrainingClick() {
     this.router.navigate(['/training/add']);
   }
 
-  private onTrainingsClick() {
-    this.router.navigate(['/training']);
-  }
-
-  private onReportIssueClick() {
+  protected onReportIssueClick() {
     this.dialog.open(ReportIssueComponent);
   }
-  private onCalendarClick() {
+  protected onCalendarClick() {
     this.router.navigate(['/training/calendar']);
   }
 }

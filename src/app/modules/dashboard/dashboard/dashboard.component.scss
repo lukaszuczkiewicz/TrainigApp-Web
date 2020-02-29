@@ -1,7 +1,4 @@
-#bottom-div {
-    width: 100px;
-    height: 100px;
-    border: solid;
-    background-color: variables(--my-very-color);
+.container {
+  display: flex;
+  justify-content: center;
 }
-

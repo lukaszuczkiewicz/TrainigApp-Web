@@ -1,9 +1,9 @@
 import { IRunner } from '../../runners/models/IRunner';
 
 export class Training {
-  trainingId: string;
+  id: string;
   runner: IRunner;
-  timeToDo: string;
+  dateToDo: string;
   details: string;
   comments: string;
   isDone: boolean;
