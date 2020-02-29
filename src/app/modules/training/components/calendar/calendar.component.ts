@@ -30,13 +30,12 @@ export class CalendarComponent implements OnInit {
   loadEvents() {
     this.trainingService.getTrainings().subscribe(
       res => {
-        console.log(res);
         this.calendarEvents = [];
         res.forEach(t => {
           const info = `Runner: ${t.firstName} ${t.lastName}
           Training: ${t.details}
           Comment: ${t.comment}`;
-          this.calendarEvents.push({ title: info, start: t.dateToDo})
+          this.calendarEvents.push({ title: info, start: t.dateToDo, allDay: true})
         })
         
       }, err => {
