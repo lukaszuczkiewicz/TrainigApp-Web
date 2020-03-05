@@ -14,6 +14,7 @@ export const environment: {
   runnersEndpoint: string;
   addTraining: string,
   trainings: string,
+  updateTraining: string,
   reportIssue: string
 } = {
   production: false,
@@ -26,6 +27,7 @@ export const environment: {
   deleteRunner: "api/coach/runner",
   runnersEndpoint: "api/coach/runners",
   addTraining: "api/coach/training",
+  updateTraining: "api/coach/training/update",
   trainings: "api/coach/trainings",
   reportIssue: "api/coach/report-issue"
 };

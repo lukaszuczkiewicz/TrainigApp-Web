@@ -1,11 +1,17 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { TrainingService } from '../../services/training.service';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 // import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
+import { MatDialog } from '@angular/material';
+
+import { TrainingService } from '../../services/training.service';
+import { EditTrainingComponent } from '../edit-training/edit-training.component';
+import { Training } from '../../models/Training';
+import { TrainingToGet } from '../../models/TrainingToGet';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-calendar',
@@ -20,26 +26,46 @@ export class CalendarComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, interactionPlugin, listPlugin];
   calendarWeekends = true;
   calendarEvents: EventInput[];
+  trainings: TrainingToGet[];
   
-  constructor(private trainingService: TrainingService) { }
+  constructor(private trainingService: TrainingService,
+    private dialog: MatDialog,
+    private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.loadEvents();
+    this.calendarComponent.eventClick.subscribe(e => {
+      const id = e.event.id;
+      const training = this.trainings.find(t => t.id === id)
+      this.dialog.open(EditTrainingComponent, {
+        data: {
+          training
+        }
+      });
+    })
+    this.trainingService.updateCalendarSubject.subscribe(
+      res => {
+        this.loadEvents();
+      }
+    )
   }
   
   loadEvents() {
     this.trainingService.getTrainings().subscribe(
       res => {
-        this.calendarEvents = [];
+        this.trainings = res;
+        this.calendarEvents = this.trainings;
         res.forEach(t => {
+          let formattedDate = new Date(t.dateToDo);
+    
+          console.log('res: '+ formattedDate);
           const info = `Runner: ${t.firstName} ${t.lastName}
           Training: ${t.details}
           Comment: ${t.comment}`;
-          this.calendarEvents.push({ title: info, start: t.dateToDo, allDay: true})
+          this.calendarEvents.push({ title: info, start: t.dateToDo, allDay: true, id: t.id})
         })
-        
       }, err => {
-        console.log(err);
+        this.alertService.error(`Couldn't load events.`);
       });
   }
   toggleVisible() {
@@ -54,14 +80,7 @@ export class CalendarComponent implements OnInit {
     let calendarApi = this.calendarComponent.getApi();
     calendarApi.gotoDate('2000-01-01'); // call a method on the Calendar object
   }
+  handleDateClick() {
 
-  handleDateClick(arg) {
-    if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-      this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-        title: 'New Event',
-        start: arg.date,
-        allDay: arg.allDay
-      })
-    }
   }
 }

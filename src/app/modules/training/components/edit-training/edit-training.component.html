@@ -1,0 +1,24 @@
+<div class="mat-dialog-title">Edit the training</div>
+<div class="mat-dialog-content">
+  <form [formGroup]="trainingForm" fxLayout="column">
+    
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="timeToDo">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-hint>Details</mat-hint>
+      <input matInput formControlName="details" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-hint>Comments</mat-hint>
+      <input matInput formControlName="comments" />
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="accent" type="button" (click)="clearForm()">Reset</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="!isOpened" type="submit" [disabled]="trainingForm.invalid" (click)="saveChanges()">Save changes</button>
+</mat-dialog-actions>

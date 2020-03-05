@@ -49,9 +49,11 @@ export class AddTrainingComponent implements OnInit {
 
   createTraining() {
     const val = this.traingForm.value;
+    let date = new Date(val.timeToDo);
+    
     const training: TrainingToCreate = {
       runnerId: val.runner,
-      timeToDo: val.timeToDo,
+      timeToDo: date.toDateString(),
       details: `Warm-up: ${val.warmUp}, Actual training: ${val.actualTraing}, Cool Down: ${val.coolDown}`,
       comments: val.comment
     };
